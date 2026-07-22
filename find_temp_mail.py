@@ -27,6 +27,7 @@ TITLE_MODE   = "full"
 
 SONG_ID      = 599842     # primary custom song ID
 SONG_ID_2    = 1          # secondary custom song ID (0 = none)
+SFX_IDS      = "5853,14061"  # comma-separated SFX IDs
 # ─────────────────────────────────────────────────────────────
 
 GD_URL = "http://www.boomlings.com/database/uploadGJLevel21.php"
@@ -185,10 +186,10 @@ def upload_level():
         "wt2":            0,
     }
 
-    # Add second song only if set
+    # Always send SFX; add second song only if set
+    data["sfxIDs"] = SFX_IDS
     if SONG_ID_2:
         data["songIDs"] = f"{SONG_ID},{SONG_ID_2}"
-        data["sfxIDs"]  = ""
 
     headers = {"User-Agent": ""}
 
